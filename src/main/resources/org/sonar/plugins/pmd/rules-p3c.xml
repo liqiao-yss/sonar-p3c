@@ -1,5 +1,4 @@
 <rules>
-    <!--p3c-->
     <!--AlibabaJavaComments-->
     <rule key="CommentsMustBeJavadocFormatRule">
         <priority>MAJOR</priority>
