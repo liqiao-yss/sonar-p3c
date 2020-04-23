@@ -28,5 +28,5 @@ Possible values:
 PMD tool provides some rules that can check the code of JUnit tests. Please note that these rules (and only these rules) will be applied only on the test files of your project.
 
 ## License
-Licensed under the [Apache License 2.0](https://github.com/zgsxxzzyl/sonar-p3c/blob/master/LICENSE)
+Licensed under the [MIT License](https://github.com/zgsxxzzyl/sonar-p3c/blob/master/LICENSE)
 
