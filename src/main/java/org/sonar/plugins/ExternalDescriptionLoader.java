@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.stream.Collectors;
 
 /**
  * Reads the corresponding classpath resource to add HTML descriptions to a given rule.
@@ -34,11 +35,9 @@ public class ExternalDescriptionLoader {
         }
     }
 
-    void addHtmlDescription(RulesDefinition.NewRule rule, URL resource) {
-        final StringBuilder builder = new StringBuilder();
+    public void addHtmlDescription(RulesDefinition.NewRule rule, URL resource) {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(resource.openStream(), StandardCharsets.UTF_8))) {
-            reader.lines().forEach(builder::append);
-            rule.setHtmlDescription(builder.toString());
+            rule.setHtmlDescription(reader.lines().collect(Collectors.joining("\r\n")));
         } catch (IOException e) {
             throw new IllegalStateException("Failed to read: " + resource, e);
         }
