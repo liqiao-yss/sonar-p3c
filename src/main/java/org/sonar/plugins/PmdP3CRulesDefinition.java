@@ -27,6 +27,7 @@ import org.sonar.squidbridge.rules.SqaleXmlLoader;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.Properties;
 
@@ -58,8 +59,9 @@ public final class PmdP3CRulesDefinition implements RulesDefinition {
 
         Properties properties = new Properties();
 
-        try (InputStream stream = PmdP3CRulesDefinition.class.getResourceAsStream("/org/sonar/l10n/pmd.properties")) {
-            properties.load(stream);
+        try (InputStream stream = PmdP3CRulesDefinition.class.getResourceAsStream("/org/sonar/l10n/pmd.properties");
+             InputStreamReader isr = new InputStreamReader(stream, "UTF-8")) {
+            properties.load(isr);
         } catch (IOException e) {
             throw new IllegalArgumentException("Could not read names from properties", e);
         }
